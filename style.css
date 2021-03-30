@@ -89,6 +89,11 @@ header{
     color: white;
 }
 /* Table */
+#transaction{
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
 #data-table{
     width: 100%;
     border-spacing: 0 0.5rem;
@@ -135,4 +140,17 @@ footer{
     padding: 4rem 0 2rem;
     color: var(--dark-blue);
     opacity: 0.6;
+}
+/* Responsive */
+
+/*min-width: 800px (acima de 800px)*/
+@media(min-width:800px){
+    html{
+        font-size: 87.5%;
+    }
+    #balance{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+    }
 }
