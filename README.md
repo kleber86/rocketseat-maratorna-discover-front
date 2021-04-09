@@ -12,8 +12,10 @@
 
 #### Aula 01 - OK
 #### Aula 02 - OK
-#### Aula 03 - Não foi possível concluir
-#### Aula 04 - Não foi possível concluir
+#### Aula 03 - 
+#### Aula 04 - 
+
+> No dia 08/04 acessando a plataforma da Rocketseat visualizei que os conteúdos da maratonas estão no site.
 
 > Estava realizando a maratona front end da Rocketseat e infelizmente no dia 31/03/2021 o conteúdo foi retirado do ar e não foi possível concluir.
 
