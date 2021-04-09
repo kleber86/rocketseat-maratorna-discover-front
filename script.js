@@ -63,9 +63,11 @@ let DOM = {
     innertHTMLTransaction(transaction) {
         let CSSClass = transaction.amount > 0 ? "income" : "expense"
 
+        let amount = Utils.formatCurrency(transaction.amount)
+
         let html = `
             <td class="description">${transaction.description}</td>
-            <td class="${CSSClass}">${transaction.amount}</td>
+            <td class="${CSSClass}">${amount}</td>
             <td class="date">${transaction.date}</td>
             <td><img src="./assets/minus.svg" alt="Remover transação"></td>
         `
@@ -74,6 +76,22 @@ let DOM = {
     }
 }
 
+let Utils = {
+    formatCurrency(value){
+        let signal = Number(value) < 0 ? "-" : ""
+
+        value = String(value).replace(/\D/g, "")
+        
+        value = Number(value) / 100
+
+        value = value.toLocaleString('pt-BR', {
+            style: "currency",
+            currency: "BRL"
+        })
+
+        return signal + value
+    }
+}
 transactions.forEach(function (transaction) {
     DOM.addTransaction(transaction)
 })
