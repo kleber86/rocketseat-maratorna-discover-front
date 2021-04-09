@@ -41,14 +41,28 @@ let transactions = [
 ]
 
 let Transaction = {
+    all: transactions,
     incomes() {
-        // Soma das entradas
+        let incomes = 0
+        Transaction.all.forEach(transaction => {
+            if (transaction.amount > 0) {
+                incomes = incomes + transaction.amount
+            }
+        })
+        return incomes
     },
     expenses() {
-        // Soma das saídas
+        let expense = 0
+        Transaction.all.forEach(transaction => { 
+            if(transaction.amount < 0){
+                expense = expense + transaction.amount
+            }
+        })
+
+        return expense
     },
     total() {
-        // Calculo das entradas - saídas
+        return Transaction.incomes() + Transaction.expenses()
     }
 }
 
@@ -73,15 +87,20 @@ let DOM = {
         `
 
         return html
+    },
+    updateBalance() {
+        document.getElementById('incomeDisplay').innerHTML = Utils.formatCurrency(Transaction.incomes())
+        document.getElementById('expenseDisplay').innerHTML = Utils.formatCurrency(Transaction.expenses())
+        document.getElementById('totalDisplay').innerHTML = Utils.formatCurrency(Transaction.total())
     }
 }
 
 let Utils = {
-    formatCurrency(value){
+    formatCurrency(value) {
         let signal = Number(value) < 0 ? "-" : ""
 
         value = String(value).replace(/\D/g, "")
-        
+
         value = Number(value) / 100
 
         value = value.toLocaleString('pt-BR', {
@@ -95,3 +114,5 @@ let Utils = {
 transactions.forEach(function (transaction) {
     DOM.addTransaction(transaction)
 })
+
+DOM.updateBalance()
