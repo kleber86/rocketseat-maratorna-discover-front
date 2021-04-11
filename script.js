@@ -45,6 +45,12 @@ let Transaction = {
         App.reload()
     },
 
+    remove(index){
+        Transaction.all.splice(index, 1)
+
+        App.reload()
+    },
+
     incomes() {
         let incomes = 0
         Transaction.all.forEach(transaction => {
@@ -137,10 +143,3 @@ let App = {
 }
 
 App.init()
-
-Transaction.add({
-    description: 'Alo',
-    amount: 20000,
-    date: '11/04/2021'
-
-})
