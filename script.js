@@ -13,31 +13,22 @@ let Modal = {
     }
 }
 
-let transactions = [
-    {
-        description: 'Luz',
-        amount: -50000,
-        date: '09/04/2021'
+let Storage = {
+    get(){
+        return JSON.parse(localStorage.getItem('dev:fincances:transactions')) || []
     },
-    {
-        description: 'Criação Website',
-        amount: 200000,
-        date: '09/04/2021'
-    },
-    {
-        description: 'Internet',
-        amount: -10000,
-        date: '09/04/2021'
-    },
-    {
-        description: 'Gastos Gerais',
-        amount: -100000,
-        date: '09/04/2021'
+
+    set(transactions){
+        localStorage.setItem("dev:fincances:transactions", JSON.stringify(transactions))
     }
+}
+
+let transactions = [
+
 ]
 
 let Transaction = {
-    all: transactions,
+    all: Storage.get(),
 
     add(transaction) {
         Transaction.all.push(transaction)
@@ -208,6 +199,8 @@ let App = {
         Transaction.all.forEach((transaction, index) => DOM.addTransaction(transaction, index))
 
         DOM.updateBalance()
+
+        Storage.set(Transaction.all)
     },
 
     reload() {
