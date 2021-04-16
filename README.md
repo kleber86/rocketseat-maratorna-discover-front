@@ -13,7 +13,7 @@
 #### Aula 01 - OK
 #### Aula 02 - OK
 #### Aula 03 - OK
-#### Aula 04 - 
+#### Aula 04 - OK
 
 > No dia 08/04 acessando a plataforma da Rocketseat visualizei que os conteúdos da maratonas estão no site.
 
